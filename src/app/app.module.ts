@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -17,6 +18,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CoreModule,
     BrowserAnimationsModule,
     MaterialModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
