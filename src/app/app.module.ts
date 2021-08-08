@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { JwtInterceptorProvider } from './core/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -28,7 +29,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
   ],
-  providers: [],
+  providers: [JwtInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

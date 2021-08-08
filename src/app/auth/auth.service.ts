@@ -22,10 +22,6 @@ export class AuthService {
   }
 
   getProfile(id: string) {
-    return this.http.get<IUser>(`${RESOURCE_URL}/profile/${id}`, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')?.split(' ')[0],
-      },
-    });
+    return this.http.get<IUser>(`${RESOURCE_URL}/profile/${id}`);
   }
 }
