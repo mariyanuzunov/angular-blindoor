@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthActions } from './';
 import { AuthService } from '../auth.service';
-import { of } from 'rxjs';
+import { of, pipe } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
@@ -14,6 +14,31 @@ export class AuthEffects {
     private router: Router
   ) {}
 
+  authStatus$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.checkAuthStatus),
+      switchMap(() =>
+        of(localStorage.getItem('token')).pipe(
+          switchMap((token) => {
+            if (!token) {
+              return of(AuthActions.notAuthenticated());
+            }
+            const id: any = token?.split(' ')[1];
+            return this.authService.getProfile(id).pipe(
+              map((user) => {
+                if (user) {
+                  return AuthActions.authenticated({ user });
+                } else {
+                  return AuthActions.notAuthenticated();
+                }
+              })
+            );
+          })
+        )
+      )
+    )
+  );
+
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
@@ -22,7 +47,10 @@ export class AuthEffects {
           .login({ email: data.email, password: data.password })
           .pipe(
             map((user) => AuthActions.loginSuccess({ user })),
-            tap(() => this.router.navigate(['/'])),
+            tap(({ user }) => {
+              localStorage.setItem('token', user.accessToken + ' ' + user.id);
+              this.router.navigate(['/']);
+            }),
             catchError((error) => of(AuthActions.loginFailure(error)))
           )
       )
