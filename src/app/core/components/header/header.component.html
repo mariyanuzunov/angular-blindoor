@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <h1>BLINDOOR</h1>
+  <nav>
+    <a mat-button routerLink="/">Home</a>
+    <a mat-stroked-button routerLink="/catalogue">Каталог</a>
+    <a mat-button routerLink="/about">За нас</a>
+
+    <a mat-button routerLink="/login">Вхид</a>
+    <a mat-button routerLink="/register">Регистрация</a>
+
+    <button mat-button [matMenuTriggerFor]="menu">Здравей, USER</button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/profile">Профил</a>
+      <a mat-menu-item routerLink="/cart">Количка</a>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logoutHandler()">Изход</button>
+    </mat-menu>
+  </nav>
+</mat-toolbar>
