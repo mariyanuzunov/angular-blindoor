@@ -21,8 +21,8 @@ export const notAuthenticated = createAction('[AUTH] Not Authenticated');
 
 export const login = createAction(
   '[AUTH] Login',
-  //   props<{ email: string; password: string }>()
-  props<{ data: LoginUserDto }>()
+  props<{ email: string; password: string }>()
+  //   props<{ data: LoginUserDto }>()
 );
 
 export const loginSuccess = createAction(
@@ -44,10 +44,7 @@ export const register = createAction(
   props<{ data: RegisterUserDto }>()
 );
 
-export const registerSuccess = createAction(
-  '[AUTH] Register Success',
-  props<{ user: IUser }>()
-);
+export const registerSuccess = createAction('[AUTH] Register Success');
 
 export const registerFailure = createAction(
   '[AUTH] Register Failure',

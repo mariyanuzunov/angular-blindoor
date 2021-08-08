@@ -7,6 +7,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './state/auth.effects';
+import { authReducer } from './state/auth.reducer';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -16,6 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
+    StoreModule.forFeature({
+      name: 'auth',
+      reducer: authReducer,
+    }),
+    EffectsModule.forFeature([AuthEffects]),
   ],
 })
 export class AuthModule {}

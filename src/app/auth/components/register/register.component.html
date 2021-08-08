@@ -1,4 +1,8 @@
 <div class="form-container">
+  <div class="auth-error" *ngIf="error$ | async as error">
+    {{ error?.error }}
+  </div>
+
   <form [formGroup]="registerForm" (ngSubmit)="registerHandler()">
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>Име</mat-label>

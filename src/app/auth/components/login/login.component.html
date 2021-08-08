@@ -1,4 +1,8 @@
 <div class="form-container">
+  <div class="auth-error" *ngIf="error$ | async as error">
+    {{ error?.message }}
+  </div>
+
   <form [formGroup]="loginForm" (ngSubmit)="loginHandler()">
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>E-mail</mat-label>

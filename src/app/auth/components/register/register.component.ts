@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../auth.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IAuthError } from 'src/app/shared/interfaces/auth-error.interface';
+import { AuthActions, AuthSelectors } from '../../state';
 
 @Component({
   selector: 'app-register',
@@ -9,8 +12,11 @@ import { AuthService } from '../../auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  error$: Observable<IAuthError | null>;
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {}
+  constructor(private fb: FormBuilder, private store: Store) {
+    this.error$ = this.store.select(AuthSelectors.selectAuthError);
+  }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -33,14 +39,18 @@ export class RegisterComponent implements OnInit {
   }
 
   registerHandler(): void {
-    // const {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   phone,
-    //   credentials: { password },
-    // } = this.registerForm.value;
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      credentials: { password },
+    } = this.registerForm.value;
 
-    console.log(`>>> registerHandler called`);
+    this.store.dispatch(
+      AuthActions.register({
+        data: { email, password, firstName, lastName, phone },
+      })
+    );
   }
 }
