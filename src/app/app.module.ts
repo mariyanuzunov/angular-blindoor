@@ -9,6 +9,7 @@ import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
     MaterialModule,
     AuthModule,
     AppRoutingModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
