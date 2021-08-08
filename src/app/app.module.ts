@@ -14,11 +14,11 @@ import { AuthModule } from './auth/auth.module';
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
     MaterialModule,
     AuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
