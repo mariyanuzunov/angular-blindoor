@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { JwtInterceptorProvider } from './core/interceptors/jwt.interceptor';
+import { CatalogueModule } from './catalogue/catalogue.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -28,6 +29,7 @@ import { JwtInterceptorProvider } from './core/interceptors/jwt.interceptor';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
+    CatalogueModule,
   ],
   providers: [JwtInterceptorProvider],
   bootstrap: [AppComponent],
