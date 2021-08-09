@@ -1,0 +1,108 @@
+<div class="form-container">
+  <form [formGroup]="cuDoorForm" (ngSubmit)="cuForm.emit(cuDoorForm.value)">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Категория</mat-label>
+      <input matInput formControlName="category" required />
+      <mat-error
+        *ngIf="
+          cuDoorForm.controls.category.touched &&
+          cuDoorForm.controls.category.invalid
+        "
+      >
+        <span *ngIf="cuDoorForm.controls.category.errors?.required"
+          >Това поле е задължително!</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Заглавие</mat-label>
+      <input matInput formControlName="title" required />
+      <mat-error
+        *ngIf="
+          cuDoorForm.controls.title.touched && cuDoorForm.controls.title.invalid
+        "
+      >
+        <span *ngIf="cuDoorForm.controls.title.errors?.required"
+          >Това поле е задължително!</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Производител</mat-label>
+      <input matInput formControlName="manufacturer" required />
+      <mat-error
+        *ngIf="
+          cuDoorForm.controls.manufacturer.touched &&
+          cuDoorForm.controls.manufacturer.invalid
+        "
+      >
+        <span *ngIf="cuDoorForm.controls.manufacturer.errors?.required"
+          >Това поле е задължително!</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Описание</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+      <mat-error
+        *ngIf="
+          cuDoorForm.controls.description.touched &&
+          cuDoorForm.controls.description.invalid
+        "
+      >
+        <span *ngIf="cuDoorForm.controls.description.errors?.required"
+          >Това поле е задължително!</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Цена</mat-label>
+      <input matInput formControlName="price" required />
+      <mat-error
+        *ngIf="
+          cuDoorForm.controls.price.touched && cuDoorForm.controls.price.invalid
+        "
+      >
+        <span *ngIf="cuDoorForm.controls.price.errors?.required"
+          >Това поле е задължително!</span
+        >
+        <span *ngIf="cuDoorForm.controls.price.errors?.min"
+          >Цената трябва да бъде положително число!</span
+        >
+        <span *ngIf="cuDoorForm.controls.price.errors?.pattern"
+          >Моля, въведете число!</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Линк към изображение</mat-label>
+      <input matInput formControlName="imgUrl" required />
+      <mat-error
+        *ngIf="
+          cuDoorForm.controls.imgUrl.touched &&
+          cuDoorForm.controls.imgUrl.invalid
+        "
+      >
+        <span *ngIf="cuDoorForm.controls.imgUrl.errors?.required"
+          >Това поле е задължително!</span
+        >
+        <span *ngIf="cuDoorForm.controls.imgUrl.errors?.pattern"
+          >Невалиден URL адрес!</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-controls">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!cuDoorForm.valid"
+      >
+        Добави
+      </button>
+    </div>
+  </form>
+</div>
