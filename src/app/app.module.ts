@@ -15,23 +15,29 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { JwtInterceptorProvider } from './core/interceptors/jwt.interceptor';
 import { CatalogueModule } from './catalogue/catalogue.module';
+import { EntityDataModule } from '@ngrx/data';
+import { entityConfig } from './entity-metadata';
+import { EntityStoreModule } from './entity-store.module';
+import { PluralHttpUrlGeneratorProvider } from './plural-http-url-generator';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [
     BrowserModule,
-    CoreModule,
-    BrowserAnimationsModule,
     MaterialModule,
+    BrowserAnimationsModule,
     AuthModule,
-    AppRoutingModule,
+    CoreModule,
     SharedModule,
+    CatalogueModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
-    CatalogueModule,
+    EntityDataModule.forRoot(entityConfig),
+    EntityStoreModule,
+    AppRoutingModule,
   ],
-  providers: [JwtInterceptorProvider],
+  providers: [JwtInterceptorProvider, PluralHttpUrlGeneratorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

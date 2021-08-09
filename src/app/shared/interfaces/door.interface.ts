@@ -1,0 +1,9 @@
+export interface IDoor {
+  _id: string;
+  category: 'входна врата' | 'интериорна врата';
+  title: string;
+  description: string;
+  price: number;
+  imgUrl: string;
+  rating: number;
+}
