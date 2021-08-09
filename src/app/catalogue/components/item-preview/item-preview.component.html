@@ -1,0 +1,9 @@
+<mat-card class="mat-elevation-z4">
+  <mat-card-title> {{ item.title }} </mat-card-title>
+  <mat-divider></mat-divider>
+  <img matCardImage src="{{ item.imgUrl }}" />
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <button mat-button (click)="details.emit(item._id)">Детайли</button>
+  </mat-card-actions>
+</mat-card>

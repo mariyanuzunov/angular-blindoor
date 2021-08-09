@@ -1,4 +1,11 @@
-<h1>All Doors</h1>
-<pre
-  >{{ doors$ | async | json }}
-</pre>
+<div class="container">
+  <div class="sidebar">S I D E B A R</div>
+
+  <div class="items-container">
+    <app-item-preview
+      *ngFor="let door of doors$ | async"
+      [item]="door"
+      (details)="detailsHandler($event)"
+    ></app-item-preview>
+  </div>
+</div>
