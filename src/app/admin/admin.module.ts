@@ -6,9 +6,10 @@ import { AddNewDoorPageComponent } from './containers/add-new-door-page/add-new-
 import { CuDoorFormComponent } from './components/cu-door-form/cu-door-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
+import { AdminPanelComponent } from './containers/admin-panel/admin-panel.component';
 
 @NgModule({
-  declarations: [AddNewDoorPageComponent, CuDoorFormComponent],
+  declarations: [AddNewDoorPageComponent, CuDoorFormComponent, AdminPanelComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
