@@ -4,7 +4,7 @@ import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthActions } from './';
 import { AuthService } from '../auth.service';
-import { of, pipe } from 'rxjs';
+import { EMPTY, of, pipe } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
@@ -25,6 +25,7 @@ export class AuthEffects {
             }
             const id: any = token?.split(' ')[1];
             return this.authService.getProfile(id).pipe(
+              catchError(() => EMPTY),
               map((user) => {
                 if (user) {
                   return AuthActions.authenticated({ user });
