@@ -1,0 +1,36 @@
+.item-details-container {
+  background-color: rgb(238, 238, 238);
+  display: flex;
+  width: 920px;
+  margin: 50px auto;
+  padding: 30px;
+
+  .img {
+    width: 320px;
+    height: 650px;
+    margin-right: 50px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .price {
+    font-size: 22px;
+    margin-top: 20px;
+  }
+
+  .description {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: justify;
+  }
+
+  .rating {
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 300;
+  }
+}

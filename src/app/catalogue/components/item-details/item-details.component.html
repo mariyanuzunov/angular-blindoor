@@ -1,0 +1,15 @@
+<mat-card class="item-details-container mat-elevation-z3">
+  <img src="{{ item?.imgUrl }}" class="img" />
+  <div>
+    <div class="title">
+      {{ item?.title }}
+    </div>
+    <div class="price">{{ item?.price }} лв.</div>
+    <div class="rating">
+      <p>Рейтинг: {{ item?.rating }} / 10</p>
+    </div>
+    <div class="description">
+      {{ item?.description }}
+    </div>
+  </div>
+</mat-card>
