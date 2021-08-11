@@ -1,19 +1,29 @@
 <mat-toolbar>
   <h1>BLINDOOR</h1>
   <nav>
-    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/">Начало</a>
     <a mat-stroked-button routerLink="/catalogue">Каталог</a>
     <a mat-button routerLink="/about">За нас</a>
+    <ng-container *ngIf="!user">
+      <a mat-button routerLink="/login">Вход</a>
+      <a mat-button routerLink="/register">Регистрация</a>
+    </ng-container>
 
-    <a mat-button routerLink="/login">Вхид</a>
-    <a mat-button routerLink="/register">Регистрация</a>
+    <ng-container *ngIf="user">
+      <button mat-button [matMenuTriggerFor]="menu">
+        Здравей, {{ user?.displayName }}
+      </button>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item routerLink="/profile">Профил</a>
+        <a mat-menu-item routerLink="/cart">Количка</a>
+        <ng-container *ngIf="user?.role == 'admin'">
+          <mat-divider></mat-divider>
+          <a mat-menu-item routerLink="/admin-panel">Админ панел</a>
+        </ng-container>
+        <mat-divider></mat-divider>
 
-    <button mat-button [matMenuTriggerFor]="menu">Здравей, USER</button>
-    <mat-menu #menu="matMenu">
-      <a mat-menu-item routerLink="/profile">Профил</a>
-      <a mat-menu-item routerLink="/cart">Количка</a>
-      <mat-divider></mat-divider>
-      <button mat-menu-item (click)="logoutHandler()">Изход</button>
-    </mat-menu>
+        <button mat-menu-item (click)="logout.emit()">Изход</button>
+      </mat-menu>
+    </ng-container>
   </nav>
 </mat-toolbar>
