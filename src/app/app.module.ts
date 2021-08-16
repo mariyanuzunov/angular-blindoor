@@ -20,6 +20,7 @@ import { entityConfig } from './entity-metadata';
 import { EntityStoreModule } from './entity-store.module';
 import { PluralHttpUrlGeneratorProvider } from './plural-http-url-generator';
 import { AdminModule } from './admin/admin.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -38,6 +39,7 @@ import { AdminModule } from './admin/admin.module';
     CatalogueModule,
     AdminModule,
     AppRoutingModule,
+    UserModule,
   ],
   providers: [JwtInterceptorProvider, PluralHttpUrlGeneratorProvider],
   bootstrap: [AppComponent],

@@ -1,0 +1,32 @@
+<div class="past-orders" *ngIf="orders && orders.length > 0">
+  <mat-card *ngFor="let order of orders" class="order mat-elevation-z3">
+    <div>Статус: {{ order.status }}</div>
+    <div *ngIf="order.status == 'регистрирана'">
+      <button mat-button>Откажи поръчката</button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="order-item" *ngFor="let product of order.products">
+      <img src="{{ product.imgUrl }}" alt="" />
+      <div>
+        <div>
+          <span class="title">{{ product.title }}</span>
+        </div>
+        <div>
+          <span class="price">{{ product.price }}</span> лв.
+        </div>
+      </div>
+
+      <!-- <a routerLink="/catalogue/{{ product._id }}">Линк към продукта</a> -->
+    </div>
+    <mat-divider></mat-divider>
+    <div>Адрес на доставка: {{ order.shippingAddress }}</div>
+
+    <div>
+      Получател:
+      {{ order.customer.firstName + order.customer.lastName }}, телефон за
+      връзка:
+      {{ order.customer.phone }}
+    </div>
+  </mat-card>
+</div>
