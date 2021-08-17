@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, mergeMap } from 'rxjs/operators';
+import { CartActions } from 'src/app/cart/state';
+import { ICartState } from 'src/app/cart/state/cart.reducer';
 import { IDoor } from 'src/app/shared/interfaces/door.interface';
 import { DoorDataService } from '../../door-data.service';
 
@@ -16,7 +19,8 @@ export class ItemDetailsPageComponent implements OnInit {
 
   constructor(
     private doorDataService: DoorDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<ICartState>
   ) {}
 
   ngOnInit(): void {
@@ -28,5 +32,10 @@ export class ItemDetailsPageComponent implements OnInit {
       mergeMap((item) => item),
       filter((x) => x._id == this.id)
     );
+  }
+
+  addToCartHandler(item: IDoor) {
+    console.log(item);
+    this.store.dispatch(CartActions.addToCart({ item }));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IDoor } from 'src/app/shared/interfaces/door.interface';
 
 @Component({
@@ -8,4 +8,5 @@ import { IDoor } from 'src/app/shared/interfaces/door.interface';
 })
 export class ItemDetailsComponent {
   @Input() item!: IDoor | null;
+  @Output() addToCart = new EventEmitter();
 }
