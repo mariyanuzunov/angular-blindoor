@@ -1,3 +1,6 @@
-<p>user-profile-page works!</p>
-
-<app-orders [orders]="orders$ | async"></app-orders>
+<div class="container">
+  <section class="my-orders">
+    <h1>Моите поръчки</h1>
+    <app-orders [orders]="orders$ | async"></app-orders>
+  </section>
+</div>

@@ -1,32 +1,34 @@
-<div class="past-orders" *ngIf="orders && orders.length > 0">
-  <mat-card *ngFor="let order of orders" class="order mat-elevation-z3">
-    <div>Статус: {{ order.status }}</div>
-    <div *ngIf="order.status == 'регистрирана'">
-      <button mat-button>Откажи поръчката</button>
-    </div>
-    <mat-divider></mat-divider>
+<section *ngIf="orders && orders.length > 0" class="my-orders">
+  <mat-card *ngFor="let order of orders" class="order mat-elevation-z4">
+    <section class="order-status-container">
+      <p class="order-status">
+        Статус: <span>{{ order.status }}</span>
+      </p>
+      <button mat-flat-button color="warn" class="cancel-order-btn">
+        Анулирай поръчката
+      </button>
+    </section>
 
-    <div class="order-item" *ngFor="let product of order.products">
-      <img src="{{ product.imgUrl }}" alt="" />
-      <div>
-        <div>
-          <span class="title">{{ product.title }}</span>
-        </div>
-        <div>
-          <span class="price">{{ product.price }}</span> лв.
-        </div>
-      </div>
+    <section class="order-products-container">
+      <article *ngFor="let product of order.products" class="order-item">
+        <img src="{{ product.imgUrl }}" alt="product image" />
+        <p>{{ product.title }}</p>
+        <p>{{ product.price }} лв.</p>
+      </article>
+    </section>
 
-      <!-- <a routerLink="/catalogue/{{ product._id }}">Линк към продукта</a> -->
-    </div>
-    <mat-divider></mat-divider>
-    <div>Адрес на доставка: {{ order.shippingAddress }}</div>
-
-    <div>
-      Получател:
-      {{ order.customer.firstName + order.customer.lastName }}, телефон за
-      връзка:
-      {{ order.customer.phone }}
-    </div>
+    <section class="order-details-container">
+      <p class="order-total-cost">Обща сума: <span>2352.99 лв.</span></p>
+      <p class="order-shipping-address">
+        Адрес за доставка: <span>{{ order.shippingAddress }}</span>
+      </p>
+      <p class="receiver-details">
+        Получател:
+        <span>{{
+          order.customer.firstName + " " + order.customer.lastName
+        }}</span
+        >, телефон за връзка - <span>{{ order.customer.phone }}</span>
+      </p>
+    </section>
   </mat-card>
-</div>
+</section>
