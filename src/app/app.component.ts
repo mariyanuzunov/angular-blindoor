@@ -10,7 +10,7 @@ import { IUser } from './shared/interfaces/user.interface';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  user$!: Observable<IUser | null>;
+  user$!: Observable<IUser | null | undefined>;
 
   constructor(private store: Store) {}
 

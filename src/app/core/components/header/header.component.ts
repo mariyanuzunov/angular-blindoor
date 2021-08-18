@@ -7,6 +7,6 @@ import { IUser } from 'src/app/shared/interfaces/user.interface';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() user!: IUser | null;
+  @Input() user!: IUser | null | undefined;
   @Output() logout = new EventEmitter();
 }

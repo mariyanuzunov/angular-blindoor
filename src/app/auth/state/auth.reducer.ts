@@ -4,13 +4,13 @@ import { IUser } from '../../shared/interfaces/user.interface';
 import { AuthActions } from './index';
 
 export interface IAuthState {
-  user: IUser | null;
+  user: IUser | null | undefined;
   error: IAuthError | null;
   loading: boolean;
 }
 
 export const initialState: IAuthState = {
-  user: null,
+  user: undefined,
   error: null,
   loading: false,
 };
@@ -30,7 +30,7 @@ export const authReducer = createReducer(
     loading: false,
   })),
 
-  on(AuthActions.notAuthenticated, () => initialState),
+  on(AuthActions.notAuthenticated, () => ({ ...initialState, user: null })),
 
   on(AuthActions.login, (state) => ({ ...state, error: null, loading: true })),
 
@@ -65,5 +65,5 @@ export const authReducer = createReducer(
     loading: false,
   })),
 
-  on(AuthActions.logout, () => initialState)
+  on(AuthActions.logout, (state) => ({ ...initialState, user: null }))
 );

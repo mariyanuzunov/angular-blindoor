@@ -15,7 +15,7 @@ import { CartActions, CartSelectors } from '../../state';
 export class CartPageComponent implements OnInit {
   items!: IDoor[] | [];
   totalCost$!: Observable<number>;
-  user$!: Observable<IUser | null>;
+  user$!: Observable<IUser | null | undefined>;
   checkoutForm!: FormGroup;
 
   constructor(private store: Store, private fb: FormBuilder) {}

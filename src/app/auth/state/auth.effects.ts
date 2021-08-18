@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthActions } from './';
@@ -11,7 +11,8 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   authStatus$ = createEffect(() =>
@@ -50,7 +51,9 @@ export class AuthEffects {
             map((user) => AuthActions.loginSuccess({ user })),
             tap(({ user }) => {
               localStorage.setItem('token', user.accessToken + ' ' + user.id);
-              this.router.navigate(['/']);
+              const redirectUrl =
+                this.activatedRoute.snapshot.queryParams.redirectUrl || '/';
+              this.router.navigate([redirectUrl]);
             }),
             catchError((error) => of(AuthActions.loginFailure(error)))
           )

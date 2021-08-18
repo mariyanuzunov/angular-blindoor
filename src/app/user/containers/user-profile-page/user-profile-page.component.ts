@@ -13,7 +13,7 @@ import { OrderDataService } from '../../order-data.service';
   styleUrls: ['./user-profile-page.component.scss'],
 })
 export class UserProfilePageComponent implements OnInit {
-  user$!: Observable<IUser | null>;
+  user$!: Observable<IUser | null | undefined>;
   orders$!: Observable<IOrder[] | null>;
   constructor(
     private store: Store<IAuthState>,
