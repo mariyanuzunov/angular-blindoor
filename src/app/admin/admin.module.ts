@@ -7,14 +7,22 @@ import { CuDoorFormComponent } from './components/cu-door-form/cu-door-form.comp
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
 import { AdminPanelComponent } from './containers/admin-panel/admin-panel.component';
+import { AllOrdersComponent } from './components/all-orders/all-orders.component';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
-  declarations: [AddNewDoorPageComponent, CuDoorFormComponent, AdminPanelComponent],
+  declarations: [
+    AddNewDoorPageComponent,
+    CuDoorFormComponent,
+    AdminPanelComponent,
+    AllOrdersComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
+    UserModule,
   ],
 })
 export class AdminModule {}

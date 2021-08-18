@@ -4,7 +4,10 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
   width: 350px;
+  padding: 15px;
 }
 
 .items-container {
@@ -12,4 +15,42 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: #f5f5f5;
+}
+
+.product-manufacturers,
+.product-categories {
+  margin-top: 30px;
+  span {
+    font-size: 24px;
+  }
+  ul {
+    margin-left: 20px;
+
+    li {
+      list-style: none;
+      font-size: 18px;
+      margin-top: 8px;
+    }
+  }
+}
+
+.product-filters {
+  margin-top: 30px;
+
+  p {
+    font-size: 24px;
+  }
+
+  span {
+    font-size: 17px;
+  }
+  .mat-form-field {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.price-filter {
+  .mat-form-field {
+    width: 60px;
+  }
 }

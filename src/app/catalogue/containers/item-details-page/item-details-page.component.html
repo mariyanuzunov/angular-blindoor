@@ -1,4 +1,6 @@
 <app-item-details
   [item]="item$ | async"
   (addToCart)="addToCartHandler($event)"
+  (edit)="editHandler($event)"
+  (remove)="removeHandler($event)"
 ></app-item-details>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { filter, mergeMap } from 'rxjs/operators';
+import { filter, mergeMap, tap } from 'rxjs/operators';
 import { CartActions } from 'src/app/cart/state';
 import { ICartState } from 'src/app/cart/state/cart.reducer';
 import { IDoor } from 'src/app/shared/interfaces/door.interface';
@@ -37,5 +37,13 @@ export class ItemDetailsPageComponent implements OnInit {
   addToCartHandler(item: IDoor) {
     console.log(item);
     this.store.dispatch(CartActions.addToCart({ item }));
+  }
+
+  editHandler(item: IDoor) {
+    console.log(item);
+  }
+
+  removeHandler(id: string) {
+    this.doorDataService.delete(id);
   }
 }

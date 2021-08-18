@@ -1,9 +1,56 @@
 <div class="container">
-  <div class="sidebar">S I D E B A R</div>
+  <div class="sidebar">
+    <section class="product-categories">
+      <span>Категории</span>
+      <ul>
+        <li>Интериорни врати</li>
+        <li>Входни врати</li>
+      </ul>
+    </section>
+
+    <section class="product-manufacturers">
+      <span>Производители</span>
+      <ul>
+        <li>Variodor</li>
+        <li>Eurostill</li>
+        <li>Star Security Door</li>
+        <li>Haska</li>
+      </ul>
+    </section>
+
+    <section class="product-filters">
+      <p>Филтри</p>
+
+      <span>Търсене</span>
+      <mat-form-field appearance="outline">
+        <mat-label>ключова дума</mat-label>
+        <input matInput [(ngModel)]="searchPattern" />
+      </mat-form-field>
+
+      <div class="price-filter">
+        <span>Цена </span>
+        <span>от</span>
+        <mat-form-field appearance="outline">
+          <mat-label>X лв.</mat-label>
+          <input matInput type="number" [(ngModel)]="min" />
+        </mat-form-field>
+        <span>до</span>
+        <mat-form-field appearance="outline">
+          <mat-label>X лв.</mat-label>
+          <input matInput type="number" [(ngModel)]="max" />
+        </mat-form-field>
+      </div>
+    </section>
+  </div>
 
   <div class="items-container">
     <app-item-preview
-      *ngFor="let door of doors$ | async"
+      *ngFor="
+        let door of doors$
+          | async
+          | searchFilter: searchPattern
+          | priceFilter: min:max
+      "
       [item]="door"
       (details)="detailsHandler($event)"
     ></app-item-preview>

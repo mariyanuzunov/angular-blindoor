@@ -11,6 +11,9 @@ import { DoorDataService } from '../../door-data.service';
 })
 export class CataloguePageComponent implements OnInit {
   doors$!: Observable<IDoor[]>;
+  searchPattern: string = '';
+  min!: number;
+  max!: number;
 
   constructor(
     private doorDataService: DoorDataService,

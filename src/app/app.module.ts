@@ -22,6 +22,7 @@ import { PluralHttpUrlGeneratorProvider } from './plural-http-url-generator';
 import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { CartModule } from './cart/cart.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -42,6 +43,7 @@ import { CartModule } from './cart/cart.module';
     AppRoutingModule,
     UserModule,
     CartModule,
+    FontAwesomeModule,
   ],
   providers: [JwtInterceptorProvider, PluralHttpUrlGeneratorProvider],
   bootstrap: [AppComponent],

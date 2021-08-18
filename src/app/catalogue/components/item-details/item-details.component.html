@@ -1,17 +1,28 @@
 <mat-card class="item-details-container mat-elevation-z3">
-  <img src="{{ item?.imgUrl }}" class="img" />
-  <div>
-    <div class="title">
-      {{ item?.title }}
+  <section class="item-details">
+    <img src="{{ item?.imgUrl }}" class="img" />
+    <div>
+      <div class="title">
+        {{ item?.title }}
+      </div>
+      <div class="price">{{ item?.price }} лв.</div>
+      <div class="rating">
+        <p>Рейтинг: {{ item?.rating }} / 5</p>
+      </div>
+      <div class="description">
+        {{ item?.description }}
+      </div>
     </div>
-    <div class="price">{{ item?.price }} лв.</div>
-    <div class="rating">
-      <p>Рейтинг: {{ item?.rating }} / 10</p>
-    </div>
-    <div class="description">
-      {{ item?.description }}
-    </div>
+  </section>
+  <div class="controls">
+    <button mat-stroked-button color="primary" (click)="addToCart.emit(item)">
+      <fa-icon [icon]="faCartPlus" size="2x"></fa-icon> Добави в количката
+    </button>
+    <button mat-stroked-button (click)="edit.emit(item)">
+      <fa-icon [icon]="faEdit" size="2x"></fa-icon> Редактирай
+    </button>
+    <button mat-stroked-button color="warn" (click)="remove.emit(item?._id)">
+      <fa-icon [icon]="faTrashAlt" size="2x"></fa-icon> Изтрий
+    </button>
   </div>
-
-  <button (click)="addToCart.emit(item)">КУПИ</button>
 </mat-card>

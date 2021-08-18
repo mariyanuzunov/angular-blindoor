@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IDoor } from 'src/app/shared/interfaces/door.interface';
+import {
+  faEdit,
+  faCartPlus,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-details',
@@ -9,4 +14,10 @@ import { IDoor } from 'src/app/shared/interfaces/door.interface';
 export class ItemDetailsComponent {
   @Input() item!: IDoor | null;
   @Output() addToCart = new EventEmitter();
+  @Output() edit = new EventEmitter();
+  @Output() remove = new EventEmitter();
+
+  faEdit = faEdit;
+  faCartPlus = faCartPlus;
+  faTrashAlt = faTrashAlt;
 }

@@ -7,9 +7,24 @@ import { ItemPreviewComponent } from './components/item-preview/item-preview.com
 import { MaterialModule } from '../material.module';
 import { ItemDetailsPageComponent } from './containers/item-details-page/item-details-page.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { CoreModule } from '../core/core.module';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [CataloguePageComponent, ItemPreviewComponent, ItemDetailsPageComponent, ItemDetailsComponent],
-  imports: [CommonModule, CatalogueRoutingModule, MaterialModule],
+  declarations: [
+    CataloguePageComponent,
+    ItemPreviewComponent,
+    ItemDetailsPageComponent,
+    ItemDetailsComponent,
+  ],
+  imports: [
+    CommonModule,
+    CatalogueRoutingModule,
+    MaterialModule,
+    CoreModule,
+    FormsModule,
+    FontAwesomeModule,
+  ],
 })
 export class CatalogueModule {}
