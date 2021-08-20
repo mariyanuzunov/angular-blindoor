@@ -14,7 +14,13 @@ export class CuDoorFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cuDoorForm = this.fb.group({
-      category: ['', [Validators.required]],
+      category: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/интериорна врата|входна врата/),
+        ],
+      ],
       title: ['', [Validators.required]],
       manufacturer: ['', [Validators.required]],
       description: ['', [Validators.required]],

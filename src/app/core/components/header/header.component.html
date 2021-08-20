@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar class="mat-elevation-z3">
   <h1>BLINDOOR</h1>
 
   <nav>
@@ -15,10 +15,11 @@
         Здравей, {{ user?.displayName }}
       </button>
       <mat-menu #menu="matMenu">
-        <a mat-menu-item routerLink="/profile">Профил</a>
-        <a mat-menu-item routerLink="/cart">Количка</a>
+        <ng-container *ngIf="user?.role == 'customer'">
+          <a mat-menu-item routerLink="/profile">Профил</a>
+          <a mat-menu-item routerLink="/cart">Количка</a>
+        </ng-container>
         <ng-container *ngIf="user?.role == 'admin'">
-          <mat-divider></mat-divider>
           <a mat-menu-item routerLink="/admin-panel">Админ панел</a>
         </ng-container>
         <mat-divider></mat-divider>

@@ -12,6 +12,9 @@
         <span *ngIf="cuDoorForm.controls.category.errors?.required"
           >Това поле е задължително!</span
         >
+        <span *ngIf="cuDoorForm.controls.category.errors?.pattern"
+          >Невалидна категория! (интериорна врата / входна врата)</span
+        >
       </mat-error>
     </mat-form-field>
 

@@ -5,6 +5,7 @@ import {
   faCartPlus,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-item-details',
@@ -13,6 +14,7 @@ import {
 })
 export class ItemDetailsComponent {
   @Input() item!: IDoor | null;
+  @Input() user!: IUser | null | undefined;
   @Output() addToCart = new EventEmitter();
   @Output() edit = new EventEmitter();
   @Output() remove = new EventEmitter();

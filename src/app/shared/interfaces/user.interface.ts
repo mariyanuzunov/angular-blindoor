@@ -4,7 +4,6 @@ export interface IUser {
   email: string;
   displayName: string;
   phone: string;
-  itemsBought?: any;
   accessToken: string;
 
   // TODO remove later

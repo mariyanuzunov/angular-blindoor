@@ -14,15 +14,20 @@
       </div>
     </div>
   </section>
-  <div class="controls">
-    <button mat-stroked-button color="primary" (click)="addToCart.emit(item)">
-      <fa-icon [icon]="faCartPlus" size="2x"></fa-icon> Добави в количката
-    </button>
-    <button mat-stroked-button (click)="edit.emit(item)">
-      <fa-icon [icon]="faEdit" size="2x"></fa-icon> Редактирай
-    </button>
-    <button mat-stroked-button color="warn" (click)="remove.emit(item?._id)">
-      <fa-icon [icon]="faTrashAlt" size="2x"></fa-icon> Изтрий
-    </button>
+  <div *ngIf="user" class="controls">
+    <ng-container *ngIf="user?.role == 'customer'">
+      <button mat-stroked-button color="primary" (click)="addToCart.emit(item)">
+        <fa-icon [icon]="faCartPlus" size="2x"></fa-icon> Добави в количката
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="user?.role == 'admin'">
+      <button mat-stroked-button (click)="edit.emit(item)">
+        <fa-icon [icon]="faEdit" size="2x"></fa-icon> Редактирай
+      </button>
+      <button mat-stroked-button color="warn" (click)="remove.emit(item?._id)">
+        <fa-icon [icon]="faTrashAlt" size="2x"></fa-icon> Изтрий
+      </button>
+    </ng-container>
   </div>
 </mat-card>

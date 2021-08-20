@@ -34,3 +34,36 @@
     </p>
   </div>
 </section>
+
+<section class="featured-images">
+  <a
+    class="img-1"
+    routerLink="/catalogue"
+    style="
+      background-image: url(https://blindoorltd.com/wp-content/uploads/2021/07/variodor.jpg);
+    "
+  >
+    <p>Интериорни врати Varidor</p>
+  </a>
+  <a class="img-2" routerLink="/catalogue">
+    <p>Входни врати Haska</p>
+  </a>
+  <a class="img-3" routerLink="/catalogue">
+    <p>Входни врати Star Security Door</p>
+  </a>
+
+  <a class="img-4" routerLink="/catalogue">
+    <p>Интериорни врати Eurostill</p>
+  </a>
+</section>
+
+<section class="newest-items-container">
+  <h1>Последно добавени</h1>
+  <section class="newest-items">
+    <app-item-preview
+      *ngFor="let door of (doors$ | async)?.slice(0, 4)"
+      [item]="door"
+      (details)="detailsHandler($event)"
+    ></app-item-preview>
+  </section>
+</section>

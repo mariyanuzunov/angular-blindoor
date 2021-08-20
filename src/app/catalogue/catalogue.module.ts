@@ -26,5 +26,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     FontAwesomeModule,
   ],
+  exports: [ItemPreviewComponent],
 })
 export class CatalogueModule {}

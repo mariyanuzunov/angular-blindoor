@@ -1,4 +1,5 @@
 <app-item-details
+  [user]="user$ | async"
   [item]="item$ | async"
   (addToCart)="addToCartHandler($event)"
   (edit)="editHandler($event)"
