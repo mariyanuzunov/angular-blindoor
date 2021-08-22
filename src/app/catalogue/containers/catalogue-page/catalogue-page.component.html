@@ -3,18 +3,52 @@
     <section class="product-categories">
       <span>Категории</span>
       <ul>
-        <li>Интериорни врати</li>
-        <li>Входни врати</li>
+        <li>
+          <a
+            routerLink="/catalogue"
+            [queryParams]="{ category: 'интериорна врата' }"
+            >Интериорни врати</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/catalogue"
+            [queryParams]="{ category: 'входна врата' }"
+            >Входни врати</a
+          >
+        </li>
       </ul>
     </section>
 
     <section class="product-manufacturers">
       <span>Производители</span>
       <ul>
-        <li>Variodor</li>
-        <li>Eurostill</li>
-        <li>Star Security Door</li>
-        <li>Haska</li>
+        <li>
+          <a
+            routerLink="/catalogue"
+            [queryParams]="{ manufacturer: 'Variodor' }"
+            >Variodor</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/catalogue"
+            [queryParams]="{ manufacturer: 'Eurostill' }"
+            >Eurostill</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/catalogue"
+            [queryParams]="{ manufacturer: 'Star Security Door' }"
+            >Star Security Door</a
+          >
+        </li>
+        <li>
+          <a routerLink="/catalogue" [queryParams]="{ manufacturer: 'Haska' }"
+            >Haska</a
+          >
+        </li>
       </ul>
     </section>
 
@@ -48,6 +82,8 @@
       *ngFor="
         let door of doors$
           | async
+          | categoryFilter: (category$ | async)
+          | manufacturerFilter: (manufacturer$ | async)
           | searchFilter: searchPattern
           | priceFilter: min:max
       "
