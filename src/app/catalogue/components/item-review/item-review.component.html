@@ -1,0 +1,25 @@
+<mat-card class="item-reviews mat-elevation-z4">
+  <h1>Клиентски отзиви</h1>
+  <mat-card *ngFor="let review of reviews">
+    <p>
+      <span class="author-name">{{
+        review.author?.firstName + " " + review.author?.lastName
+      }}</span>
+      <span> написа:</span>
+      <button
+        (click)="deleteReview.emit(review._id)"
+        class="btn-delete"
+        mat-flat-button
+        color="warn"
+      >
+        Изтрий
+      </button>
+    </p>
+
+    <p class="review-content">{{ review.content }}</p>
+
+    <p class="review-date">
+      Публикувано на <span>{{ review.createdAt }}</span>
+    </p>
+  </mat-card>
+</mat-card>

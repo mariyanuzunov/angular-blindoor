@@ -5,3 +5,12 @@
   (edit)="editHandler($event)"
   (remove)="removeHandler($event)"
 ></app-item-details>
+
+<app-add-review
+  [userId]="(user$ | async)?._id"
+  [itemId]="(item$ | async)?._id"
+></app-add-review>
+<app-item-review
+  [reviews]="reviews$ | async"
+  (deleteReview)="deleteReviewHandler($event)"
+></app-item-review>

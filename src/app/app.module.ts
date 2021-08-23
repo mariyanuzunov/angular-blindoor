@@ -23,6 +23,7 @@ import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { CartModule } from './cart/cart.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
@@ -44,6 +45,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     UserModule,
     CartModule,
     FontAwesomeModule,
+    ReviewsModule,
   ],
   providers: [JwtInterceptorProvider, PluralHttpUrlGeneratorProvider],
   bootstrap: [AppComponent],

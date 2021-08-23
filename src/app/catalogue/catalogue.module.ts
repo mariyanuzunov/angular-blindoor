@@ -8,8 +8,10 @@ import { MaterialModule } from '../material.module';
 import { ItemDetailsPageComponent } from './containers/item-details-page/item-details-page.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { CoreModule } from '../core/core.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ItemReviewComponent } from './components/item-review/item-review.component';
+import { AddReviewComponent } from './components/add-review/add-review.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ItemPreviewComponent,
     ItemDetailsPageComponent,
     ItemDetailsComponent,
+    ItemReviewComponent,
+    AddReviewComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +29,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CoreModule,
     FormsModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
   ],
   exports: [ItemPreviewComponent],
 })

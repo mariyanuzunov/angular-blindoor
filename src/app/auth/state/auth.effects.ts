@@ -50,7 +50,7 @@ export class AuthEffects {
           .pipe(
             map((user) => AuthActions.loginSuccess({ user })),
             tap(({ user }) => {
-              localStorage.setItem('token', user.accessToken + ' ' + user.id);
+              localStorage.setItem('token', user.accessToken + ' ' + user._id);
               const redirectUrl =
                 this.activatedRoute.snapshot.queryParams.redirectUrl || '/';
               this.router.navigate([redirectUrl]);

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { filter, mergeMap, tap } from 'rxjs/operators';
 import { AuthSelectors } from 'src/app/auth/state';
 import { CartActions } from 'src/app/cart/state';
-import { ICartState } from 'src/app/cart/state/cart.reducer';
+import { ReviewActions, ReviewSelectors } from 'src/app/reviews/state';
 import { IDoor } from 'src/app/shared/interfaces/door.interface';
+import { IReview } from 'src/app/shared/interfaces/review.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 import { DoorDataService } from '../../door-data.service';
 
@@ -18,6 +18,7 @@ import { DoorDataService } from '../../door-data.service';
 export class ItemDetailsPageComponent implements OnInit {
   id!: string;
   item$!: Observable<IDoor>;
+  reviews$!: Observable<IReview[] | []>;
   user$!: Observable<IUser | null | undefined>;
 
   constructor(
@@ -27,17 +28,14 @@ export class ItemDetailsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.doorDataService.getAll();
     this.user$ = this.store.select(AuthSelectors.selectAuthUser);
     this.route.params.subscribe((params) => (this.id = params['id']));
-    this.item$ = this.doorDataService.entities$.pipe(
-      mergeMap((item) => item),
-      filter((x) => x._id == this.id)
-    );
+    this.item$ = this.doorDataService.getByKey(this.id);
+    this.store.dispatch(ReviewActions.fetchItemReviews({ itemId: this.id }));
+    this.reviews$ = this.store.pipe(select(ReviewSelectors.selectItemReviews));
   }
 
   addToCartHandler(item: IDoor) {
-    console.log(item);
     this.store.dispatch(CartActions.addToCart({ item }));
   }
 
@@ -47,5 +45,9 @@ export class ItemDetailsPageComponent implements OnInit {
 
   removeHandler(id: string) {
     this.doorDataService.delete(id);
+  }
+
+  deleteReviewHandler(id: string) {
+    this.store.dispatch(ReviewActions.deleteReview({ reviewId: id }));
   }
 }
