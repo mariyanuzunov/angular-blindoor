@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthSelectors } from 'src/app/auth/state';
@@ -24,6 +24,7 @@ export class ItemDetailsPageComponent implements OnInit {
   constructor(
     private doorDataService: DoorDataService,
     private route: ActivatedRoute,
+    private router: Router,
     private store: Store
   ) {}
 
@@ -40,11 +41,13 @@ export class ItemDetailsPageComponent implements OnInit {
   }
 
   editHandler(item: IDoor) {
-    console.log(item);
+    this.router.navigateByUrl('/admin-panel/edit-item/' + item._id);
   }
 
-  removeHandler(id: string) {
-    this.doorDataService.delete(id);
+  deleteDoorHandler(id: string) {
+    this.doorDataService
+      .delete(id)
+      .subscribe({ next: () => this.router.navigateByUrl('/catalogue') });
   }
 
   deleteReviewHandler(id: string) {

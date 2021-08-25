@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../core/guards/admin.guard';
 import { AllOrdersComponent } from './components/all-orders/all-orders.component';
-import { AddNewDoorPageComponent } from './containers/add-new-door-page/add-new-door-page.component';
+import { AddItemPageComponent } from './containers/add-item-page/add-item-page.component';
 import { AdminPanelComponent } from './containers/admin-panel/admin-panel.component';
+import { EditItemPageComponent } from './containers/edit-item-page/edit-item-page.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     component: AdminPanelComponent,
     children: [
-      { path: 'add-new-door', component: AddNewDoorPageComponent },
+      { path: 'add-item', component: AddItemPageComponent },
+      { path: 'edit-item/:id', component: EditItemPageComponent },
       { path: 'all-orders', component: AllOrdersComponent },
     ],
   },

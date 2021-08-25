@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CuDoorFormComponent } from './cu-door-form.component';
+import { AddItemComponent } from './add-item.component';
 
-describe('CuDoorFormComponent', () => {
-  let component: CuDoorFormComponent;
-  let fixture: ComponentFixture<CuDoorFormComponent>;
+describe('AddItemComponent', () => {
+  let component: AddItemComponent;
+  let fixture: ComponentFixture<AddItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CuDoorFormComponent ]
+      declarations: [ AddItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CuDoorFormComponent);
+    fixture = TestBed.createComponent(AddItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

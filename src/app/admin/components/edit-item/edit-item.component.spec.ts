@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddNewDoorPageComponent } from './add-new-door-page.component';
+import { EditItemComponent } from './edit-item.component';
 
-describe('AddNewDoorPageComponent', () => {
-  let component: AddNewDoorPageComponent;
-  let fixture: ComponentFixture<AddNewDoorPageComponent>;
+describe('EditItemComponent', () => {
+  let component: EditItemComponent;
+  let fixture: ComponentFixture<EditItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddNewDoorPageComponent ]
+      declarations: [ EditItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddNewDoorPageComponent);
+    fixture = TestBed.createComponent(EditItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

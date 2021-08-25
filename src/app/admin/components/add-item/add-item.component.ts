@@ -2,18 +2,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-cu-door-form',
-  templateUrl: './cu-door-form.component.html',
-  styleUrls: ['./cu-door-form.component.scss'],
+  selector: 'app-add-item',
+  templateUrl: './add-item.component.html',
+  styleUrls: ['./add-item.component.scss'],
 })
-export class CuDoorFormComponent implements OnInit {
-  cuDoorForm!: FormGroup;
-  @Output() cuForm = new EventEmitter();
+export class AddItemComponent implements OnInit {
+  addItemForm!: FormGroup;
+  @Output() addItem = new EventEmitter();
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.cuDoorForm = this.fb.group({
+    this.addItemForm = this.fb.group({
       category: [
         '',
         [
