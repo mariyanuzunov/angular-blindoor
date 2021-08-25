@@ -13,7 +13,6 @@ import { DoorDataService } from '../../door-data.service';
 export class CataloguePageComponent implements OnInit {
   doors$!: Observable<IDoor[]>;
   searchPattern: string = '';
-  // category: string = '';
   category$!: Observable<string | null>;
   manufacturer$!: Observable<string | null>;
   min!: number;
@@ -27,7 +26,6 @@ export class CataloguePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.doors$ = this.doorDataService.getAll();
-    // this.category = this.route.snapshot.queryParamMap.get('category') || '';
     this.category$ = this.route.queryParamMap.pipe(
       map((p) => p.get('category'))
     );

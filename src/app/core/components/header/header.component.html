@@ -12,7 +12,7 @@
 
     <ng-container *ngIf="user">
       <button mat-button [matMenuTriggerFor]="menu">
-        Здравей, {{ user?.displayName }}
+        Здравей, {{ user?.firstName }}
       </button>
       <mat-menu #menu="matMenu">
         <ng-container *ngIf="user?.role == 'customer'">

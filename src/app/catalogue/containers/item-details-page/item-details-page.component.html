@@ -7,6 +7,7 @@
 ></app-item-details>
 
 <app-add-review
+  *ngIf="(user$ | async)?.purchases?.includes(id)"
   [userId]="(user$ | async)?._id"
   [itemId]="(item$ | async)?._id"
 ></app-add-review>
