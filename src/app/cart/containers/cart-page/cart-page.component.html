@@ -19,10 +19,7 @@
       </div>
     </li>
   </div>
-  <mat-card
-    *ngIf="user$ | async as user"
-    class="shipping-details mat-elevation-z4"
-  >
+  <mat-card *ngIf="user" class="shipping-details mat-elevation-z4">
     <form [formGroup]="checkoutForm" (ngSubmit)="checkoutHandler()">
       <mat-form-field class="form-field" appearance="outline">
         <mat-label>Получател</mat-label>

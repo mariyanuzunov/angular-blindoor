@@ -1,6 +1,7 @@
 <div class="container">
-  <section class="my-orders">
+  <section class="orders-list">
     <h1>Моите поръчки</h1>
-    <app-orders [orders]="orders$ | async"></app-orders>
+    <mat-divider></mat-divider>
+    <app-orders-list [orders]="orders$ | async"></app-orders-list>
   </section>
 </div>

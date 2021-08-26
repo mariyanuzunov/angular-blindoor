@@ -11,6 +11,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { PriceFilterPipe } from './pipes/price-filter.pipe';
 import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 import { ManufacturerFilterPipe } from './pipes/manufacturer-filter.pipe';
+import { MongooseDatePipe } from './pipes/mongoose-date.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ManufacturerFilterPipe } from './pipes/manufacturer-filter.pipe';
     PriceFilterPipe,
     CategoryFilterPipe,
     ManufacturerFilterPipe,
+    MongooseDatePipe,
   ],
   imports: [CommonModule, RouterModule, MaterialModule],
   exports: [
@@ -29,6 +31,7 @@ import { ManufacturerFilterPipe } from './pipes/manufacturer-filter.pipe';
     PriceFilterPipe,
     CategoryFilterPipe,
     ManufacturerFilterPipe,
+    MongooseDatePipe,
   ],
   providers: [JwtInterceptor, UserGuard, AdminGuard],
 })

@@ -5,8 +5,6 @@ import { StoreModule } from '@ngrx/store';
 import { cartReducer } from './state/cart.reducer';
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EffectsModule } from '@ngrx/effects';
-import { CartEffects } from './state/cart.effects';
 
 @NgModule({
   declarations: [CartPageComponent],
@@ -18,7 +16,6 @@ import { CartEffects } from './state/cart.effects';
       name: 'cart',
       reducer: cartReducer,
     }),
-    EffectsModule.forFeature([CartEffects]),
   ],
 })
 export class CartModule {}

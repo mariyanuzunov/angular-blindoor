@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { OrderActions, OrderSelectors } from 'src/app/orders/state';
+import { IOrderState } from 'src/app/orders/state/order.reducer';
 import { IOrder } from 'src/app/shared/interfaces/order.interface';
-import { OrderDataService } from 'src/app/user/order-data.service';
 
 @Component({
   selector: 'app-all-orders',
@@ -11,9 +13,10 @@ import { OrderDataService } from 'src/app/user/order-data.service';
 export class AllOrdersComponent implements OnInit {
   orders$!: Observable<IOrder[] | null>;
 
-  constructor(private orderDataService: OrderDataService) {}
+  constructor(private store: Store<IOrderState>) {}
 
   ngOnInit(): void {
-    this.orders$ = this.orderDataService.getAll();
+    this.store.dispatch(OrderActions.fetchAllOrders());
+    this.orders$ = this.store.select(OrderSelectors.selectAllOrders);
   }
 }
