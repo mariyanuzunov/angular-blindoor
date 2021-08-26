@@ -49,8 +49,4 @@ export class ItemDetailsPageComponent implements OnInit {
       .delete(id)
       .subscribe({ next: () => this.router.navigateByUrl('/catalogue') });
   }
-
-  deleteReviewHandler(id: string) {
-    this.store.dispatch(ReviewActions.deleteReview({ reviewId: id }));
-  }
 }

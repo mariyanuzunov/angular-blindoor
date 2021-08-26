@@ -11,7 +11,5 @@
   [userId]="(user$ | async)?._id"
   [itemId]="(item$ | async)?._id"
 ></app-add-review>
-<app-item-review
-  [reviews]="reviews$ | async"
-  (deleteReview)="deleteReviewHandler($event)"
-></app-item-review>
+
+<app-reviews-list [reviews]="reviews$ | async"></app-reviews-list>
