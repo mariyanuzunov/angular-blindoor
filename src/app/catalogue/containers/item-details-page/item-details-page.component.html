@@ -12,4 +12,8 @@
   [itemId]="(item$ | async)?._id"
 ></app-add-review>
 
-<app-reviews-list [reviews]="reviews$ | async"></app-reviews-list>
+<section class="reviews-container">
+  <h1>Потребителски отзиви</h1>
+  <mat-divider></mat-divider>
+  <app-reviews-list [reviews]="reviews$ | async"></app-reviews-list>
+</section>

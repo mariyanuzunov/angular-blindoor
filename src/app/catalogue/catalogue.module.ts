@@ -8,7 +8,6 @@ import { ItemDetailsPageComponent } from './containers/item-details-page/item-de
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { CoreModule } from '../core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReviewsModule } from '../reviews/reviews.module';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { ReviewsModule } from '../reviews/reviews.module';
     MaterialModule,
     CoreModule,
     FormsModule,
-    FontAwesomeModule,
     ReactiveFormsModule,
     ReviewsModule,
   ],

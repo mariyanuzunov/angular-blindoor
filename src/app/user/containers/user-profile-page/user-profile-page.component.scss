@@ -1,5 +1,10 @@
-.orders-list {
-  h1 {
-    text-align: center;
-  }
+.orders-list,
+.reviews-list {
+  width: 920px;
+  margin: 50px auto;
+}
+
+.nav {
+  text-align: center;
+  background-color: #f1efe9;
 }

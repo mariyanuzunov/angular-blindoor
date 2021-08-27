@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthSelectors } from 'src/app/auth/state';
 import { CartActions } from 'src/app/cart/state';
+import { DialogConfirmComponent } from 'src/app/core/components/dialog-confirm/dialog-confirm.component';
 import { ReviewActions, ReviewSelectors } from 'src/app/reviews/state';
 import { IDoor } from 'src/app/shared/interfaces/door.interface';
 import { IReview } from 'src/app/shared/interfaces/review.interface';
@@ -25,7 +28,9 @@ export class ItemDetailsPageComponent implements OnInit {
     private doorDataService: DoorDataService,
     private route: ActivatedRoute,
     private router: Router,
-    private store: Store
+    private store: Store,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +43,19 @@ export class ItemDetailsPageComponent implements OnInit {
 
   addToCartHandler(item: IDoor) {
     this.store.dispatch(CartActions.addToCart({ item }));
+
+    const notificationRef = this._snackBar.open(
+      'Продуктът е добавен във вашата количка!',
+      'Преглед',
+      {
+        duration: 2500,
+      }
+    );
+
+    notificationRef.onAction().subscribe(() => {
+      this.router.navigateByUrl('/cart');
+      notificationRef.dismiss();
+    });
   }
 
   editHandler(item: IDoor) {
@@ -45,8 +63,18 @@ export class ItemDetailsPageComponent implements OnInit {
   }
 
   deleteDoorHandler(id: string) {
-    this.doorDataService
-      .delete(id)
-      .subscribe({ next: () => this.router.navigateByUrl('/catalogue') });
+    this.openDialog(id);
+  }
+
+  openDialog(id: string) {
+    const dialogRef = this.dialog.open(DialogConfirmComponent);
+
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        this.doorDataService
+          .delete(id)
+          .subscribe({ next: () => this.router.navigateByUrl('/catalogue') });
+      }
+    });
   }
 }

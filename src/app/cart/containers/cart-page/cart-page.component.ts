@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthSelectors } from 'src/app/auth/state';
@@ -20,7 +22,12 @@ export class CartPageComponent implements OnInit {
   user!: IUser | null | undefined;
   checkoutForm!: FormGroup;
 
-  constructor(private store: Store, private fb: FormBuilder) {}
+  constructor(
+    private store: Store,
+    private fb: FormBuilder,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.store
@@ -50,6 +57,18 @@ export class CartPageComponent implements OnInit {
         shippingAddress,
       };
       this.store.dispatch(OrderActions.createOrder({ data }));
+
+      const notificationRef = this._snackBar.open(
+        'Вашата поръчкава е изпратена успешно!',
+        '',
+        {
+          duration: 2500,
+        }
+      );
+
+      notificationRef.afterDismissed().subscribe(() => {
+        this.router.navigateByUrl('/');
+      });
     }
   }
 }

@@ -55,10 +55,7 @@ export const fetchItemReviewsFailure = createAction(
 
 // Fetch USER reviews
 
-export const fetchUserReviews = createAction(
-  `${NAMESPACE} Fetch user reviews`,
-  props<{ userId: string }>()
-);
+export const fetchUserReviews = createAction(`${NAMESPACE} Fetch user reviews`);
 
 export const fetchUserReviewsSuccess = createAction(
   `${NAMESPACE} Fetch User reviews Success`,

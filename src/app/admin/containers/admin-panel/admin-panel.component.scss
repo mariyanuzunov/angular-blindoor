@@ -3,18 +3,4 @@
   flex-direction: column;
   width: 1400px;
   margin: 0px auto;
-
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    height: 60px;
-    background-color: rgb(238, 238, 238);
-
-    a {
-      font-size: 20px;
-      font-weight: 400;
-    }
-  }
 }

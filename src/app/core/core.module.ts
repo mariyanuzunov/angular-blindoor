@@ -12,6 +12,9 @@ import { PriceFilterPipe } from './pipes/price-filter.pipe';
 import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 import { ManufacturerFilterPipe } from './pipes/manufacturer-filter.pipe';
 import { MongooseDatePipe } from './pipes/mongoose-date.pipe';
+import { OrderStatusFilterPipe } from './pipes/order-status-filter.pipe';
+import { DialogConfirmComponent } from './components/dialog-confirm/dialog-confirm.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { MongooseDatePipe } from './pipes/mongoose-date.pipe';
     CategoryFilterPipe,
     ManufacturerFilterPipe,
     MongooseDatePipe,
+    OrderStatusFilterPipe,
+    DialogConfirmComponent,
+    PageTitleComponent,
   ],
   imports: [CommonModule, RouterModule, MaterialModule],
   exports: [
@@ -32,6 +38,8 @@ import { MongooseDatePipe } from './pipes/mongoose-date.pipe';
     CategoryFilterPipe,
     ManufacturerFilterPipe,
     MongooseDatePipe,
+    OrderStatusFilterPipe,
+    PageTitleComponent,
   ],
   providers: [JwtInterceptor, UserGuard, AdminGuard],
 })

@@ -1,4 +1,6 @@
-<div
+<app-page-title [title]="'КОЛИЧКА'"></app-page-title>
+
+<mat-card
   class="cart-container mat-elevation-z2"
   *ngIf="items.length > 0; else elseBlock"
 >
@@ -7,10 +9,9 @@
       <button
         class="cart-btn-remove-item"
         mat-flat-button
-        color="warn"
         (click)="removeItemHandler(item._id)"
       >
-        X
+        <mat-icon class="mat-18" color="warn">delete</mat-icon>
       </button>
       <img class="cart-item-img" src="{{ item.imgUrl }}" />
       <div>
@@ -62,7 +63,7 @@
       </button>
     </form>
   </mat-card>
-</div>
+</mat-card>
 <ng-template #elseBlock>
-  <h1>Вашата количка е празна... :(</h1>
+  <h1 class="empty-cart">Вашата количка е празна... :(</h1>
 </ng-template>

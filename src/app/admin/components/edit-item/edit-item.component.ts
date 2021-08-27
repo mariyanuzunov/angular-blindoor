@@ -14,6 +14,15 @@ export class EditItemComponent implements OnInit {
   @Input() item$!: Observable<IDoor>;
   @Output() editItem = new EventEmitter();
 
+  // TODO
+  categories: string[] = ['интериорна врата', 'входна врата'];
+  manufacturers: string[] = [
+    'Variodor',
+    'Eurostill',
+    'Haska',
+    'Star Security Door',
+  ];
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -27,6 +36,7 @@ export class EditItemComponent implements OnInit {
           ],
         ],
         title: [item.title, [Validators.required]],
+        manufacturer: [item.manufacturer, [Validators.required]],
         description: [item.description, [Validators.required]],
         price: [
           item.price,

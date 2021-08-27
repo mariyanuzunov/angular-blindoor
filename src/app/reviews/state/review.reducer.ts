@@ -55,6 +55,46 @@ export const reviewReducer = createReducer(
     error,
   })),
 
+  // Fetch User Reviews Reducers
+  // TODO
+
+  on(ReviewActions.fetchUserReviews, (state) => ({
+    ...state,
+    loading: true,
+  })),
+
+  on(ReviewActions.fetchUserReviewsSuccess, (state, { reviews }) => ({
+    ...state,
+    reviews,
+    loading: false,
+  })),
+
+  on(ReviewActions.fetchUserReviewsFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+
+  // Fetch All Reviews Reducers
+  // TODO
+
+  on(ReviewActions.fetchAllReviews, (state) => ({
+    ...state,
+    loading: true,
+  })),
+
+  on(ReviewActions.fetchAllReviewsSuccess, (state, { reviews }) => ({
+    ...state,
+    reviews,
+    loading: false,
+  })),
+
+  on(ReviewActions.fetchAllReviewsFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+
   // Delete Item Review Reducers
 
   on(ReviewActions.deleteReview, (state) => ({

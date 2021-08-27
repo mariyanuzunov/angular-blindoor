@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
@@ -21,12 +20,12 @@ import { PluralHttpUrlGeneratorProvider } from './plural-http-url-generator';
 import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { CartModule } from './cart/cart.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReviewsModule } from './reviews/reviews.module';
 import { OrdersModule } from './orders/orders.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     MaterialModule,
@@ -41,12 +40,12 @@ import { OrdersModule } from './orders/orders.module';
     SharedModule,
     CatalogueModule,
     AdminModule,
-    AppRoutingModule,
     UserModule,
     CartModule,
-    FontAwesomeModule,
     ReviewsModule,
     OrdersModule,
+    HomeModule,
+    AppRoutingModule,
   ],
   providers: [JwtInterceptorProvider, PluralHttpUrlGeneratorProvider],
   bootstrap: [AppComponent],

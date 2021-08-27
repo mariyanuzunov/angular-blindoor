@@ -14,17 +14,32 @@
       <button mat-button [matMenuTriggerFor]="menu">
         Здравей, {{ user?.firstName }}
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu class="dropdown" #menu="matMenu">
         <ng-container *ngIf="user?.role == 'customer'">
-          <a mat-menu-item routerLink="/profile">Профил</a>
-          <a mat-menu-item routerLink="/cart">Количка</a>
+          <a mat-menu-item routerLink="/profile">
+            <mat-icon>person</mat-icon> Профил</a
+          >
+          <a mat-menu-item routerLink="/cart">
+            <span class="cart-link">
+              <mat-icon
+                matBadge="{{ cartItemsCount$ | async }}"
+                matBadgeColor="warn"
+                >shopping_cart</mat-icon
+              >
+              Количка</span
+            >
+          </a>
         </ng-container>
         <ng-container *ngIf="user?.role == 'admin'">
-          <a mat-menu-item routerLink="/admin-panel">Админ панел</a>
+          <a mat-menu-item routerLink="/admin-panel"
+            ><mat-icon>admin_panel_settings</mat-icon>Админ панел</a
+          >
         </ng-container>
         <mat-divider></mat-divider>
 
-        <button mat-menu-item (click)="logout.emit()">Изход</button>
+        <button mat-menu-item (click)="logout.emit()">
+          <mat-icon>logout</mat-icon>Изход
+        </button>
       </mat-menu>
     </ng-container>
   </nav>

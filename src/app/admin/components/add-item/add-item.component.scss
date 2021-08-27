@@ -1,7 +1,8 @@
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-top: 20px;
+  width: 1400px;
 }
 
 .mat-card {
@@ -10,8 +11,17 @@
 
 .form-container {
   background-color: rgb(250, 250, 250);
-  width: 450px;
+  width: 500px;
   font-size: 18px;
+
+  .select-inputs {
+    display: flex;
+    justify-content: space-between;
+
+    .form-field-select {
+      width: 224px;
+    }
+  }
 
   .form-field {
     display: block;
@@ -37,10 +47,10 @@ h2 {
 .item-details-container {
   background-color: rgb(250, 250, 250);
   width: 850px;
-  padding: 30px;
 
   .item-details {
     display: flex;
+    padding-top: 15px;
   }
 
   .img {

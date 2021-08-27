@@ -1,3 +1,7 @@
-<app-header [user]="user$ | async" (logout)="logoutHandler()"></app-header>
+<app-header
+  [user]="user$ | async"
+  [cartItemsCount$]="cartItemsCount$"
+  (logout)="logoutHandler()"
+></app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

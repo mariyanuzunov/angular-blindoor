@@ -3,6 +3,7 @@
   width: 920px;
   margin: 50px auto;
   padding: 30px;
+  border-radius: 13px;
 
   .item-details {
     display: flex;
@@ -30,19 +31,23 @@
     font-weight: 300;
     text-align: justify;
   }
-
-  .rating {
-    margin-top: 30px;
-    font-size: 14px;
-    font-weight: 300;
-  }
 }
 
 .controls {
   display: flex;
   margin-left: 350px;
+  justify-content: flex-end;
   button {
     height: 55px;
     margin-left: 20px;
+
+    span {
+      margin-left: 10px;
+      font-size: 15px;
+    }
+  }
+
+  .icon {
+    transform: scale(2);
   }
 }

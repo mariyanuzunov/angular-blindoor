@@ -6,9 +6,6 @@
         {{ item?.title }}
       </div>
       <div class="price">{{ item?.price }} лв.</div>
-      <div class="rating">
-        <p>Рейтинг: {{ item?.rating }} / 5</p>
-      </div>
       <div class="description">
         {{ item?.description }}
       </div>
@@ -17,16 +14,17 @@
   <div *ngIf="user" class="controls">
     <ng-container *ngIf="user?.role == 'customer'">
       <button mat-stroked-button color="primary" (click)="addToCart.emit(item)">
-        <fa-icon [icon]="faCartPlus" size="2x"></fa-icon> Добави в количката
+        <mat-icon class="icon">add_shopping_cart</mat-icon>
+        <span>Добави в количката</span>
       </button>
     </ng-container>
 
     <ng-container *ngIf="user?.role == 'admin'">
       <button mat-stroked-button (click)="edit.emit(item)">
-        <fa-icon [icon]="faEdit" size="2x"></fa-icon> Редактирай
+        <mat-icon class="icon">edit</mat-icon>
       </button>
       <button mat-stroked-button color="warn" (click)="remove.emit(item?._id)">
-        <fa-icon [icon]="faTrashAlt" size="2x"></fa-icon> Изтрий
+        <mat-icon class="icon">delete</mat-icon>
       </button>
     </ng-container>
   </div>

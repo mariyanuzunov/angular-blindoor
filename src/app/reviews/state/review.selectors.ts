@@ -7,3 +7,14 @@ export const selectItemReviews = createSelector(
   selectReviewState,
   (state: IReviewState) => state.reviews
 );
+
+// TODO
+export const selectUserReviews = createSelector(
+  selectReviewState,
+  (state: IReviewState) => state.reviews
+);
+
+export const selectAllReviews = createSelector(
+  selectReviewState,
+  (state: IReviewState) => state.reviews
+);

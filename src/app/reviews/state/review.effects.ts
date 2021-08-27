@@ -26,6 +26,34 @@ export class ReviewEffects {
     )
   );
 
+  userReviews$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ReviewActions.fetchUserReviews),
+      switchMap(() =>
+        this.reviewService.getUserReviews().pipe(
+          map((reviews) => ReviewActions.fetchUserReviewsSuccess({ reviews })),
+          catchError((error) =>
+            of(ReviewActions.fetchUserReviewsFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  allReviews$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ReviewActions.fetchAllReviews),
+      switchMap(() =>
+        this.reviewService.getAllReviews().pipe(
+          map((reviews) => ReviewActions.fetchAllReviewsSuccess({ reviews })),
+          catchError((error) =>
+            of(ReviewActions.fetchAllReviewsFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
   createReview$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ReviewActions.createReview),

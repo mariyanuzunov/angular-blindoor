@@ -1,9 +1,15 @@
+<nav mat-tab-nav-bar>
+  <a
+    mat-tab-link
+    *ngFor="let link of links"
+    (click)="activeLink = link"
+    [active]="activeLink.url == link.url"
+    routerLink="{{ link.url }}"
+  >
+    {{ link.text }}
+  </a>
+</nav>
 <div class="container">
-  <nav>
-    <a mat-button routerLink="add-item">Добавяне на нова врата</a>
-    <a mat-button routerLink="all-orders">Управление на поръчките</a>
-  </nav>
-
   <section>
     <router-outlet></router-outlet>
   </section>

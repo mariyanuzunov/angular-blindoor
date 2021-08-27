@@ -4,6 +4,8 @@ mat-card {
   width: 280px;
   margin: 8px;
   text-align: center;
+  border-radius: 13px;
+  background-color: #f1efe9;
 
   img {
     width: 215px;
@@ -24,5 +26,5 @@ mat-card {
 
 mat-card:hover {
   @include mat.elevation-transition();
-  @include mat.elevation(5);
+  @include mat.elevation(7);
 }

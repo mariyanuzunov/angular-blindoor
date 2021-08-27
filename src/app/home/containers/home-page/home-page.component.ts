@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DoorDataService } from '../catalogue/door-data.service';
-import { IDoor } from '../shared/interfaces/door.interface';
+import { DoorDataService } from 'src/app/catalogue/door-data.service';
+import { IDoor } from 'src/app/shared/interfaces/door.interface';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomePageComponent implements OnInit {
   doors$!: Observable<IDoor[]>;
   constructor(
     private doorDataService: DoorDataService,

@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { cartReducer } from './state/cart.reducer';
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [CartPageComponent],
@@ -12,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
+    CoreModule,
     StoreModule.forFeature({
       name: 'cart',
       reducer: cartReducer,

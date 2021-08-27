@@ -3,7 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthSelectors } from 'src/app/auth/state';
 import { OrderActions, OrderSelectors } from 'src/app/orders/state';
+import { ReviewActions, ReviewSelectors } from 'src/app/reviews/state';
 import { IOrder } from 'src/app/shared/interfaces/order.interface';
+import { IReview } from 'src/app/shared/interfaces/review.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 
 @Component({
@@ -12,14 +14,21 @@ import { IUser } from 'src/app/shared/interfaces/user.interface';
   styleUrls: ['./user-profile-page.component.scss'],
 })
 export class UserProfilePageComponent implements OnInit {
-  user$!: Observable<IUser | null | undefined>;
+  user$!: IUser | null | undefined;
   orders$!: Observable<IOrder[]>;
+  reviews$!: Observable<IReview[]>;
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.user$ = this.store.select(AuthSelectors.selectAuthUser);
-    this.store.dispatch(OrderActions.fetchUserOrders());
-    this.orders$ = this.store.select(OrderSelectors.selectUserOrders);
+    this.store.select(AuthSelectors.selectAuthUser).subscribe((user) => {
+      if (user) {
+        this.user$ = user;
+        this.store.dispatch(OrderActions.fetchUserOrders());
+        this.orders$ = this.store.select(OrderSelectors.selectUserOrders);
+        this.store.dispatch(ReviewActions.fetchUserReviews());
+        this.reviews$ = this.store.select(ReviewSelectors.selectUserReviews);
+      }
+    });
   }
 }

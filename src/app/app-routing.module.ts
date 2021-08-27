@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartPageComponent } from './cart/containers/cart-page/cart-page.component';
 import { UserGuard } from './core/guards/user.guard';
-import { HomeComponent } from './home/home.component';
+import { HomePageComponent } from './home/containers/home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserProfilePageComponent } from './user/containers/user-profile-page/user-profile-page.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomePageComponent },
   {
     path: 'profile',
     component: UserProfilePageComponent,

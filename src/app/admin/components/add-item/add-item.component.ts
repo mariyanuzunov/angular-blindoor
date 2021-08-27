@@ -10,6 +10,15 @@ export class AddItemComponent implements OnInit {
   addItemForm!: FormGroup;
   @Output() addItem = new EventEmitter();
 
+  // TODO
+  categories: string[] = ['интериорна врата', 'входна врата'];
+  manufacturers: string[] = [
+    'Variodor',
+    'Eurostill',
+    'Haska',
+    'Star Security Door',
+  ];
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -38,5 +47,10 @@ export class AddItemComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  submitHandler() {
+    this.addItem.emit(this.addItemForm.value);
+    this.addItemForm.reset();
   }
 }

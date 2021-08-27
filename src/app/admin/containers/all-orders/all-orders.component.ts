@@ -12,6 +12,30 @@ import { IOrder } from 'src/app/shared/interfaces/order.interface';
 })
 export class AllOrdersComponent implements OnInit {
   orders$!: Observable<IOrder[] | null>;
+  selectedStatus!: string;
+
+  statuses = [
+    {
+      value: '',
+      viewValue: 'Всички',
+    },
+    {
+      value: 'регистрирана',
+      viewValue: 'Регистрирани',
+    },
+    {
+      value: 'обработена',
+      viewValue: 'Обработени',
+    },
+    {
+      value: 'изпълнена',
+      viewValue: 'Изпълнени',
+    },
+    {
+      value: 'анулирана',
+      viewValue: 'Анулирани',
+    },
+  ];
 
   constructor(private store: Store<IOrderState>) {}
 

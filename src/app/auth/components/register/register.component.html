@@ -1,4 +1,6 @@
-<div class="form-container">
+<app-page-title [title]="'РЕГИСТРАЦИЯ'"></app-page-title>
+
+<mat-card class="form-container">
   <div class="auth-error" *ngIf="error$ | async as error">
     {{ error?.error }}
   </div>
@@ -133,4 +135,4 @@
       <a routerLink="/login" mat-button> или вход със съществуващ профил</a>
     </div>
   </form>
-</div>
+</mat-card>

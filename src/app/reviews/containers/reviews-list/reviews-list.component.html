@@ -1,16 +1,11 @@
-<mat-card
-  *ngIf="reviews && reviews.length > 0; else emptyList"
-  class="reviews-container mat-elevation-z4"
->
-  <h1>Клиентски отзиви</h1>
-  <mat-divider></mat-divider>
+<ng-container *ngIf="reviews && reviews.length > 0; else emptyList">
   <app-review
     *ngFor="let review of reviews"
     [review]="review"
     (deleteReview)="deleteReviewHandler($event)"
   ></app-review>
-</mat-card>
+</ng-container>
 
 <ng-template #emptyList>
-  <h2>Все още няма потребителски отзиви за този продукт!</h2>
+  <h3>Все още няма потребителски отзиви за този продукт...</h3>
 </ng-template>

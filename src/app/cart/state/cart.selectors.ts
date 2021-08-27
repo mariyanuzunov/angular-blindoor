@@ -22,3 +22,8 @@ export const selectCartError = createSelector(
   selectCartState,
   (state: ICartState) => state.error
 );
+
+export const selectCartItemsCount = createSelector(
+  selectCartState,
+  (state: ICartState) => state.products.length
+);

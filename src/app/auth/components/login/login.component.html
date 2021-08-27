@@ -1,6 +1,8 @@
-<div class="form-container">
+<app-page-title [title]="'ВХОД'"></app-page-title>
+
+<mat-card class="form-container">
   <div class="auth-error" *ngIf="error$ | async as error">
-    {{ error?.message }}
+    Грешно потребителско име или парола!
   </div>
 
   <form [formGroup]="loginForm" (ngSubmit)="loginHandler()">
@@ -50,4 +52,4 @@
       <a routerLink="/register" mat-button> или създаване на нов профил</a>
     </div>
   </form>
-</div>
+</mat-card>

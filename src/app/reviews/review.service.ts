@@ -18,10 +18,8 @@ export class ReviewService {
     return this.http.get<IReview[] | []>(RESOURCE_URL);
   }
 
-  getUserReviews(userId: string) {
-    return this.http.get<IReview[] | []>(
-      `${RESOURCE_URL}/my-reviews/${userId}`
-    );
+  getUserReviews() {
+    return this.http.get<IReview[] | []>(`${RESOURCE_URL}/my-reviews`);
   }
 
   getItemReviews(itemId: string) {

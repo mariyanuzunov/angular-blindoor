@@ -6,23 +6,31 @@
       [formGroup]="editItemForm"
       (ngSubmit)="editItem.emit(editItemForm.value)"
     >
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>Категория</mat-label>
-        <input matInput formControlName="category" required />
-        <mat-error
-          *ngIf="
-            editItemForm.controls.category.touched &&
-            editItemForm.controls.category.invalid
-          "
-        >
-          <span *ngIf="editItemForm.controls.category.errors?.required"
-            >Това поле е задължително!</span
-          >
-          <span *ngIf="editItemForm.controls.category.errors?.pattern"
-            >Невалидна категория! (интериорна врата / входна врата)</span
-          >
-        </mat-error>
-      </mat-form-field>
+      <div class="select-inputs">
+        <mat-form-field class="form-field-select" appearance="outline">
+          <mat-label>Категория</mat-label>
+          <mat-select formControlName="category">
+            <mat-option
+              *ngFor="let category of categories"
+              [value]="category"
+              >{{ category }}</mat-option
+            >
+          </mat-select>
+          <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-select" appearance="outline">
+          <mat-label>Производител</mat-label>
+          <mat-select formControlName="manufacturer">
+            <mat-option
+              *ngFor="let manufacturer of manufacturers"
+              [value]="manufacturer"
+              >{{ manufacturer }}</mat-option
+            >
+          </mat-select>
+          <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+      </div>
 
       <mat-form-field class="form-field" appearance="outline">
         <mat-label>Заглавие</mat-label>
@@ -92,15 +100,16 @@
 
       <div class="form-controls">
         <button mat-raised-button color="primary" type="submit">
-          > Редактирай
+          Редактирай
         </button>
       </div>
     </form>
   </mat-card>
 
   <div class="preview-container">
-    <h2>Предварителен преглед</h2>
     <mat-card class="item-details-container mat-elevation-z0">
+      <h2>Предварителен преглед</h2>
+      <mat-divider></mat-divider>
       <section class="item-details">
         <img
           src="{{
