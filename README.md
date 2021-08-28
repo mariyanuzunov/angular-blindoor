@@ -1,27 +1,66 @@
-# AngularBlindoor
+# BLINDOOR - online store for interior and exterior doors
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+Angular project for SoftUni JS-Web, 2021.
+
+## Technologies
+
+- Angular
+- Angular Material
+- NgRx
+- [Nest.js API](https://github.com/mariyanuzunov/nest-api-blindoor)
+- MongoDB
+
+## User roles
+
+#### Guest
+
+- Access to Home, Catalogue, About, Login and Register pages.
+- Log In to an existing account
+- Create a new account
+
+#### User (customer)
+
+- Add items to the cart
+- Submit an order
+- Cancel an order, but only if the status is still the default - 'registered'
+- Write a review about a product, but only if the status of the order is 'completed'.
+- Access to user profile page, where he can
+  - View account details
+  - View his order history
+  - View his reviews history
+
+#### Admin
+
+- Add, Edit and Delete items
+- View all orders
+- Change order status
+- View all user reviews
+- Delete a review
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+```bash
+pip install foobar
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+### Instalation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`$ npm install`
 
-## Running unit tests
+### Spin a development server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+# Angular
+$ ng serve
 
-## Running end-to-end tests
+# Nest API - Visit (https://github.com/mariyanuzunov/nest-api-blindoor) for more details
+$ npm run start
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[MIT](https://choosealicense.com/licenses/mit/)
