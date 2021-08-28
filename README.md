@@ -37,14 +37,6 @@ Angular project for SoftUni JS-Web, 2021.
 - View all user reviews
 - Delete a review
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-```bash
-pip install foobar
-```
-
 ## Usage
 
 ### Instalation
